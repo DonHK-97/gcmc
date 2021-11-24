@@ -54,3 +54,6 @@ class Trainer:
         else:
             print('[ Epoch: {:>4}/{} | Loss: {:.6f} | RMSE: {:.6f} | Test RMSE: {:.6f} ]'.format(
                 epoch, self.epochs, loss, train_rmse, test_rmse))
+
+    def save(self, path):
+        torch.save(self.model.state_dict(), path)

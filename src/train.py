@@ -1,3 +1,4 @@
+import sys
 from comet_ml import Experiment
 import torch
 import yaml
@@ -8,7 +9,7 @@ from trainer import Trainer
 from utils import calc_rmse, ster_uniform, random_init, init_xavier, init_uniform, Config
 
 
-def main(cfg, comet=False):
+def main(cfg, save=False, comet=False):
     cfg = Config(cfg)
 
     # comet-ml setting
@@ -54,5 +55,9 @@ def main(cfg, comet=False):
 if __name__ == '__main__':
     with open('config.yml') as f:
         cfg = yaml.safe_load(f)
-    main(cfg)
+
+    if len(sys.argv) < 2:
+        main(cfg)
+    else:
+        main(cfg, save=sys.argv[1])
     # main(cfg, comet=True)

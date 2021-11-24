@@ -37,13 +37,14 @@ def split_stack(features, index, relations, dim_size):
     stacked_out : tensor(relation * nodes x out_dim)
     """
     out_dim = features.shape[0]
-    np_index = index.numpy()
-    np_relations = relations.numpy()
+    # np_index = index.numpy()
+    # np_relations = relations.numpy()
     splited_features = torch.split(features, int(out_dim / 5), dim=1)
 
     stacked_out = []
     for r, feature in enumerate(splited_features):
-        relation_only_r = torch.from_numpy(np.where(np_relations==r)[0])
+        # relation_only_r = torch.from_numpy(np.where(np_relations==r)[0])
+        relation_only_r = torch.nonzero(relations==r).flatten()
         r_index = index[relation_only_r]
         r_feature = feature[relation_only_r]
         stacked_out.append(scatter_('add', r_feature, r_index, dim_size=dim_size))

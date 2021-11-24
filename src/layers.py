@@ -127,7 +127,8 @@ class RGCLayer(MessagePassing):
         return aggr_out
 
     def node_dropout(self, weight):
-        drop_mask = torch.rand(self.in_c) + (1 - self.drop_prob)
+        drop_mask = torch.rand(self.in_c).to(torch.device('cuda')) + (1 - self.drop_prob)
+        # drop_mask = torch.rand(self.in_c) + (1 - self.drop_prob)
         drop_mask = torch.floor(drop_mask).type(torch.float)
         if self.accum == 'split_stack':
             drop_mask = drop_mask.unsqueeze(1)

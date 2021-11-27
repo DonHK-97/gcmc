@@ -9,14 +9,12 @@ Original file is located at
 
 import os
 import copy
-import glob
-import shutil
 import pandas as pd
 import numpy as np
 
 import torch
 from torch_scatter import scatter_add
-from torch_geometric.data import InMemoryDataset, Data, download_url, extract_zip
+from torch_geometric.data import InMemoryDataset, Data
 from torch_geometric.utils import one_hot
 
 

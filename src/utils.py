@@ -99,7 +99,7 @@ def random_init(tensor, in_dim, out_dim):
 
 def init_xavier(m):
     if type(m) == nn.Linear:
-        torch.nn.init.xavier_uniform_(m.weight)
+        torch.nn.init.kaiming_uniform_(m.weight)
         try:
             truncated_normal(m.bias)
         except:

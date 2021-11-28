@@ -1,7 +1,7 @@
 # training
 epochs: 1000
 lr: 0.01
-weight_decay: 0.1
+weight_decay: 0.9
 drop_prob: 0.7
 
 # network

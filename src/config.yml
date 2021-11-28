@@ -1,8 +1,8 @@
 # training
 epochs: 1000
 lr: 0.01
-weight_decay: 0.95
-drop_prob: 0.6
+weight_decay: 0.9
+drop_prob: 0.7
 
 # network
 accum: split_stack
@@ -26,4 +26,4 @@ project_name:
 api_key: 
 
 # environment
-gpu_id: -1 # -1 mean cpu
+gpu_id: 0 # -1 mean cpu

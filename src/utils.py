@@ -82,12 +82,6 @@ def stack(features, index, relations, dim_size):
     #     out[tar_idx] = feature
     return out
     
-
-def ster_uniform(tensor, in_dim, out_dim):
-    if tensor is not None:
-        tensor.data.uniform_(-0.001, 0.001)
-
-
 def random_init(tensor, in_dim, out_dim):
     thresh = math.sqrt(6.0 / (in_dim + out_dim))
     if tensor is not None:
@@ -96,18 +90,9 @@ def random_init(tensor, in_dim, out_dim):
         except:
             nn.init.uniform_(tensor, a=-thresh, b=thresh)
 
-
-def init_xavier(m):
+def init_kaiming(m):
     if type(m) == nn.Linear:
         torch.nn.init.kaiming_uniform_(m.weight)
-        try:
-            truncated_normal(m.bias)
-        except:
-            pass
-
-def init_uniform(m):
-    if type(m) == nn.Linear:
-        torch.nn.init.uniform_(m.weight)
         try:
             truncated_normal(m.bias)
         except:
@@ -134,7 +119,6 @@ def calc_rmse(pred, gt):
     rmse = torch.pow(torch.sum(rmse) / gt.shape[0], 0.5)
 
     return rmse
-
 
 class AverageMeter:
     def __init__(self):

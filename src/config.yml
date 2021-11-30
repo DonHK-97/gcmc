@@ -8,7 +8,7 @@ drop_prob: 0.7
 accum: split_stack
 hidden_size: 
   - 500
-  - 75
+  - 100
 num_basis: 2
 rgc_bn: True
 rgc_relu: True

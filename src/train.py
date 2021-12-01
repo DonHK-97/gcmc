@@ -6,7 +6,7 @@ import yaml
 from dataset import MCDataset
 from model import GAE
 from trainer import Trainer
-from utils import calc_rmse, ster_uniform, random_init, init_xavier, init_uniform, Config
+from utils import calc_rmse, random_init, init_kaiming, Config
 
 
 def main(cfg, save=False, comet=False):
@@ -37,7 +37,7 @@ def main(cfg, save=False, comet=False):
 
     # set and init model
     model = GAE(cfg, random_init).to(device)
-    model.apply(init_xavier)
+    model.apply(init_kaiming)
 
     # optimizer
     optimizer = torch.optim.Adam(

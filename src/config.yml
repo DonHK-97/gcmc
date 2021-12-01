@@ -1,14 +1,14 @@
 # training
 epochs: 1000
-lr: 0.01
+lr: 0.005
 weight_decay: 0.9
-drop_prob: 0.7
+drop_prob: 0
 
 # network
 accum: split_stack
 hidden_size: 
   - 500
-  - 75
+  - 100
 num_basis: 2
 rgc_bn: True
 rgc_relu: True

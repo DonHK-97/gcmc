@@ -44,7 +44,10 @@ def main(cfg, save=False, comet=False):
         model.parameters(),
         lr=cfg.lr, weight_decay=cfg.weight_decay
     )
-    scheduler = ReduceLROnPlateau(optimizer, 'min', parience= 50, cool_down = 50)
+    scheduler = ReduceLROnPlateau(optimizer, 'min', patience= cfg.patience,
+     cool_down = cfg.cool_down, min_lr= cfg.min_lr
+     )
+
 
     # train
     trainer = Trainer(

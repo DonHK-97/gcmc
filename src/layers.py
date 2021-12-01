@@ -32,7 +32,7 @@ class RGCLayer(MessagePassing):
             # ordinal basis matrices in_c * out_c = 2625 * 500
             ord_basis = [nn.Parameter(torch.Tensor(1, in_c * out_c)) for r in range(self.num_relations)]
             self.ord_basis = nn.ParameterList(ord_basis)
-        self.relu = nn.PReLU()
+        self.relu = nn.LeakyReLU()
 
         if config.accum == 'stack':
             self.bn = nn.BatchNorm1d(self.in_c * config.num_relations)
@@ -166,7 +166,7 @@ class DenseLayer(nn.Module):
         else:
             self.bn_u = nn.BatchNorm1d(config.num_users)
             self.bn_i = nn.BatchNorm1d(config.num_nodes - config.num_users)
-        self.relu = nn.PReLU()
+        self.relu = nn.LeakyReLU()
 
     def forward(self, u_features, i_features):
         u_features = self.dropout(u_features)

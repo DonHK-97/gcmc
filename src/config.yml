@@ -1,8 +1,8 @@
 # training
 epochs: 1000
-lr: 0.005
+lr: 0.01
 weight_decay: 0.9
-drop_prob: 0
+drop_prob: 0.5
 
 # network
 accum: split_stack

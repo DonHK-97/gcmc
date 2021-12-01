@@ -42,12 +42,13 @@ def main(cfg, save=False, comet=False):
     # optimizer
     optimizer = torch.optim.Adam(
         model.parameters(),
-        lr=cfg.lr, weight_decay=cfg.weight_decay,
+        lr=cfg.lr, weight_decay=cfg.weight_decay
     )
+    scheduler = ReduceLROnPlateau(optimizer, 'min', parience= 50, cool_down = 50)
 
     # train
     trainer = Trainer(
-        model, dataset, data, calc_rmse, optimizer, experiment,
+        model, dataset, data, calc_rmse, optimizer, scheduler, experiment,
     )
     trainer.training(cfg.epochs)
 

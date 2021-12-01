@@ -1,8 +1,11 @@
 # training
 epochs: 1000
 lr: 0.01
-weight_decay: 0.9
+weight_decay: 0.95
 drop_prob: 0.7
+patience : 100
+cool_down : 50
+min_lr : 200
 
 # network
 accum: split_stack

@@ -46,7 +46,7 @@ def main(cfg, save=False, comet=False):
     )
     scheduler = ReduceLROnPlateau(optimizer, mode = 'min', patience= cfg.patience,
      cool_down = cfg.cool_down, min_lr= cfg.min_lr, verbose= 1
-     )
+
 
 
     # train

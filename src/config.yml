@@ -1,6 +1,7 @@
 # training
 epochs: 1000
 lr: 0.01
+
 weight_decay: 0
 drop_prob: 0.7
 patience : 50

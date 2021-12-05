@@ -27,7 +27,7 @@ class MCDataset(InMemoryDataset):
         
     @property
     def num_relations(self):
-        return self.data.edge_type.max().item() + 1
+        return self.data.edge_type.max().item()
 
     @property
     def num_nodes(self):

@@ -3,6 +3,7 @@ from comet_ml import Experiment
 import torch
 import yaml
 
+from torch.optim.lr_scheduler import ReduceLROnPlateau
 from dataset import MCDataset
 from model import GAE
 from trainer import Trainer
@@ -46,6 +47,7 @@ def main(cfg, save=False, comet=False):
     )
     scheduler = ReduceLROnPlateau(optimizer, mode = 'min', patience= cfg.patience,
      cool_down = cfg.cool_down, min_lr= cfg.min_lr, verbose= 1
+    )
 
 
 

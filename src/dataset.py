@@ -100,7 +100,7 @@ class MCDataset(InMemoryDataset):
 
     def create_gt_idx(self, df, nums):
         df['idx'] = df['user_id'] * (nums['access'] * df['rate']) + df['access']
-        idx = torch.tensor(df['idx'][:7500])
+        idx = torch.tensor(df['idx'][:7499])
         gt = torch.tensor(df['product_id'][:7500])
         return idx, gt
 

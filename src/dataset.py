@@ -46,7 +46,7 @@ class MCDataset(InMemoryDataset):
         train_df, train_nums = self.create_df(train_csv)
         test_df, test_nums = self.create_df(test_csv)
 
-        train_idx[:7500], train_gt[:7500] = self.create_gt_idx(train_df, train_nums)
+        train_idx, train_gt = self.create_gt_idx(train_df, train_nums)
         test_idx, test_gt = self.create_gt_idx(test_df, train_nums)
         
         train_df['access'] = train_df['access'] + train_nums['user']
@@ -75,8 +75,8 @@ class MCDataset(InMemoryDataset):
         data = Data(x=x, edge_index=edge_index)
         data.edge_type = edge_type
         data.edge_norm = edge_norm
-        data.train_idx = train_idx
-        data.train_gt = train_gt
+        data.train_idx = train_idx[:7500]
+        data.train_gt = train_gt[:7500]
         data.num_users = torch.tensor([train_nums['user']])
         data.num_items = torch.tensor([train_nums['access']])
         

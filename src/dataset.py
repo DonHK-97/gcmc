@@ -93,13 +93,13 @@ class MCDataset(InMemoryDataset):
         df['product_id'] = df['product_id'] - 1
 
         nums = {'user': df.max()['user_id'] + 1,
-                'access' : df.max()['access'] + 1,
+                'access' : df.max()['access'],
                 'node': df.max()['user_id'] + df.max()['access'] + 2,
                 'edge': len(df)}
         return df, nums
 
     def create_gt_idx(self, df, nums):
-        df['idx'] = df['user_id'] * nums['access'] + df['access'] * df['rate'] - 1
+        df['idx'] = df['user_id'] * nums['access'] + df['access'] * df['rate']
         idx = torch.tensor(df['idx'])
         gt = torch.tensor(df['product_id'])
         return idx, gt

@@ -90,7 +90,7 @@ class MCDataset(InMemoryDataset):
         df['access'] = df['device'] + df['method'] - 2
         df = df.drop(['sentiment', 'polarity', 'device', 'method'], axis=1)
         df['user_id'] = df['user_id'] - 1
-        df['product'] = df['product'] - 1
+        df['product_id'] = df['product_id'] - 1
 
         nums = {'user': df.max()['user_id'] + 1,
                 'access' : df.max()['access'] + 1,

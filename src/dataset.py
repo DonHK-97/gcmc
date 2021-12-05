@@ -60,7 +60,7 @@ class MCDataset(InMemoryDataset):
                                   torch.cat((edge_item, edge_user), 0)), 0)
         edge_index = edge_index.to(torch.long)
 
-        edge_type = torch.tensor(train_df['product'])
+        edge_type = torch.tensor(train_df['product_id'])
         edge_type = torch.cat((edge_type, edge_type), 0)
 
         edge_norm = copy.deepcopy(edge_index[1])

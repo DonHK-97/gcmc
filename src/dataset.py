@@ -46,7 +46,7 @@ class MCDataset(InMemoryDataset):
         train_df, train_nums = self.create_df(train_csv)
         test_df, test_nums = self.create_df(test_csv)
 
-        train_idx[:7500], train_gt = self.create_gt_idx(train_df, train_nums)
+        train_idx[:7500], train_gt[:7500] = self.create_gt_idx(train_df, train_nums)
         test_idx, test_gt = self.create_gt_idx(test_df, train_nums)
         
         train_df['access'] = train_df['access'] + train_nums['user']

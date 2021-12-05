@@ -29,7 +29,7 @@ def main(cfg, save=False, comet=False):
         if torch.cuda.is_available() and cfg.gpu_id >= 0
         else torch.device('cpu'))
     dataset = MCDataset(cfg.root, cfg.dataset_name)
-    data = dataset[1].to(device)
+    data = dataset[0].to(device)
 
     # add some params to config
     cfg.num_nodes = dataset.num_nodes

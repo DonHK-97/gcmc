@@ -27,7 +27,7 @@ class MCDataset(InMemoryDataset):
         
     @property
     def num_relations(self):
-        return self.data.edge_type.max().item()
+        return self.data.edge_type.max().item() + 1
 
     @property
     def num_nodes(self):
@@ -75,8 +75,8 @@ class MCDataset(InMemoryDataset):
         data = Data(x=x, edge_index=edge_index)
         data.edge_type = edge_type
         data.edge_norm = edge_norm
-        data.train_idx = train_idx[:7500]
-        data.train_gt = train_gt[:7500]
+        data.train_idx = train_idx
+        data.train_gt = train_gt
         data.num_users = torch.tensor([train_nums['user']])
         data.num_items = torch.tensor([train_nums['access']])
         
@@ -95,13 +95,13 @@ class MCDataset(InMemoryDataset):
         nums = {'user': df.max()['user_id'] + 1,
                 'access' : df.max()['access'] + 1,
                 'node': df.max()['user_id'] + df.max()['access'] + 2,
-                'edge': len(df) - 1}
+                'edge': len(df)}
         return df, nums
 
     def create_gt_idx(self, df, nums):
         df['idx'] = df['user_id'] * (nums['access'] * df['rate']) + df['access']
-        idx = torch.tensor(df['idx'][:7499])
-        gt = torch.tensor(df['product_id'][:7500])
+        idx = torch.tensor(df['idx'])
+        gt = torch.tensor(df['product_id'])
         return idx, gt
 
     def get(self, idx):

@@ -95,7 +95,7 @@ class MCDataset(InMemoryDataset):
         nums = {'user': df.max()['user_id'] + 1,
                 'access' : df.max()['access'] + 1,
                 'node': df.max()['user_id'] + df.max()['access'] + 2,
-                'edge': len(df)}
+                'edge': len(df) - 1}
         return df, nums
 
     def create_gt_idx(self, df, nums):

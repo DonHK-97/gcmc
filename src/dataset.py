@@ -88,7 +88,7 @@ class MCDataset(InMemoryDataset):
         df = pd.read_csv(csv_path, sep='\t', names=col_names)
         df['rate'] = df['rate'] * df['sentiment']
         df['access'] = df['device'] + df['method'] - 2
-        df = df.drop(['sentiment', 'polarity', df['device'], df['method']], axis=1)
+        df = df.drop(['sentiment', 'polarity', 'device', 'method'], axis=1)
         df['user_id'] = df['user_id'] - 1
         df['product'] = df['product'] - 1
 

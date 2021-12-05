@@ -93,7 +93,7 @@ class MCDataset(InMemoryDataset):
         df['product_id'] = df['product_id'] - 1
 
         nums = {'user': df.max()['user_id'] + 1,
-                'access' : df.max()['access'] - 1,
+                'access' : df.max()['access'] + 1,
                 'node': df.max()['user_id'] + df.max()['access'] + 2,
                 'edge': len(df)}
         return df, nums

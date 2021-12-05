@@ -46,7 +46,7 @@ def main(cfg, save=False, comet=False):
         lr=cfg.lr, weight_decay=cfg.weight_decay
     )
     scheduler = ReduceLROnPlateau(optimizer, mode = 'min', patience= cfg.patience,
-     cooldown= = cfg.cool_down, min_lr= cfg.min_lr, verbose= True
+     cooldown= cfg.cool_down, min_lr= cfg.min_lr, verbose= True
     )
 
 
